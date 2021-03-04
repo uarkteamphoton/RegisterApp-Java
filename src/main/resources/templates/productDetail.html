@@ -4,11 +4,11 @@
 	<title>Register - Product</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-	<link rel="stylesheet" type="text/css" href="/styles/master.css">
-	<link rel="stylesheet" type="text/css" href="/styles/productDetail.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/productDetail.css">
 
-	<script type="text/javascript" src="/scripts/master.js" defer></script>
-	<script type="text/javascript" src="/scripts/productDetail.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/master.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/productDetail.js" defer></script>
 </head>
 
 <body>
@@ -34,20 +34,20 @@
 					<tr>
 						<td class="label">Lookup Code:</td>
 						<td>
-							<input id="productLookupCode" type="text" th:value="${!product.isEmpty} ? ${product.lookupCode} : ''" class="update" />
+							<input id="productLookupCode" type="text" th:value="${!product.isEmpty} ? ${product.lookupCode} : ''" class="update" th:disabled="not ${isElevatedUser}" />
 						</td>
 					</tr>
 					<tr>
 						<td class="label">Count:</td>
 						<td>
-							<input id="productCount" type="number" th:value="${!product.isEmpty} ? ${product.count} : ''" class="update" />
+							<input id="productCount" type="number" th:value="${!product.isEmpty} ? ${product.count} : ''" class="update" th:disabled="not ${isElevatedUser}" />
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 
-		<div class="productActionsWrapper">
+		<div class="productActionsWrapper" th:class="(not ${isElevatedUser} OR not ${#strings.isEmpty(errorMessage)}) ? hidden : ''">
 			<br />
 			<div id="deleteActionContainer" th:class="${product.isEmpty} ? hidden : ''">
 				<button id="deleteButton" type="button" class="action">Delete</button>
@@ -67,6 +67,14 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="footer">
+		<button id="signOutButton"
+		onclick="window.location.href='signIn.html';"
+		onclick="signOutActionClickHandler()">
+		<img src="../static/images/logout-24px.svg" alt="Sign Out" class="footer" />
+		</button>
 	</div>
 		
 </body>
