@@ -166,7 +166,6 @@ function displayError(errorMessage) {
 
 //Getters and setters
 function getSignOutActionElement() {
-	window.location.assign("/signIn")
 	return document.getElementById("signOutImage");
 }
 
