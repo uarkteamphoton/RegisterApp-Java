@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.uark.registerapp.commands.VoidCommandInterface;
 import edu.uark.registerapp.models.entities.ActiveUserEntity;
 import edu.uark.registerapp.models.repositories.ActiveUserRepository;
+import edu.uark.registerapp.models.api.EmployeeSignIn;
 
 @Service
 public class ActiveUserDeleteCommand implements VoidCommandInterface {
