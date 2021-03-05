@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	getViewProductsActionElement().addEventListener(
 		"click",
-		() => { window.location.assign("productListing.html"); });
+		() => { window.location.assign("/productListing"); });
 
 	getCreateEmployeeActionElement().addEventListener(
 		"click",
-		() => { window.location.assign("employeeDetail.html"); });
+		() => { window.location.assign("/employeeDetail"); });
 
 	getProductSalesReportActionElement().addEventListener(
 		"click",
