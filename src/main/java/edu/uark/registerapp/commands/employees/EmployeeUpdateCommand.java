@@ -28,6 +28,19 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
 		return this.apiEmployee;
 	}
 
+	// Helper methods
+	private void validateProperties() {
+		if (StringUtils.isBlank(this.apiEmployee.getFirstName())) {
+			throw new UnprocessableEntityException("first name");
+		}
+		if (StringUtils.isBlank(this.apiEmployee.getLastName())) {
+			throw new UnprocessableEntityException("last name");
+		}
+		if (EmployeeClassification.map(this.apiEmployee.getClassification()) == EmployeeClassification.NOT_DEFINED) {
+			throw new UnprocessableEntityException("classification");
+		}
+	}
+
 	@Transactional
 	private void updateEmployeeEntity() {
 		final Optional<EmployeeEntity> queriedEmployeeEntity =
@@ -43,6 +56,24 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
 		this.employeeRepository.save(queriedEmployeeEntity.get()); // Write, via an UPDATE, any changes to the database.
 	}
 
+	// Properties
+	private UUID employeeId;
+	public UUID getEmployeeId() {
+		return this.employeeId;
+	}
+	public EmployeeUpdateCommand setEmployeeId(final UUID employeeId) {
+		this.employeeId = employeeId;
+		return this;
+	}
+
+	private Employee apiEmployee;
+	public Employee getApiEmployee() {
+		return this.apiEmployee;
+	}
+	public EmployeeUpdateCommand setApiEmployee(final Employee apiEmployee) {
+		this.apiEmployee = apiEmployee;
+		return this;
+	}
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
