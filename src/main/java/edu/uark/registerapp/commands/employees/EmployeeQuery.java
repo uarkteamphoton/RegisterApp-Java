@@ -21,20 +21,9 @@ public class EmployeeQuery implements ResultCommandInterface<Employee> {
 
 		if (employeeEntity.isPresent()) {
 			return new Employee(employeeEntity.get());
-		} else {
-			throw new NotFoundException("Employee");
 		}
 	}
 
-	// Properties
-	private UUID employeeId;
-	public UUID getEmployeeId() {
-		return this.employeeId;
-	}
-	public EmployeeQuery setEmployeeId(final UUID employeeId) {
-		this.employeeId = employeeId;
-		return this;
-	}
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
