@@ -33,7 +33,7 @@
 					<tr class="hidden">
 						<td>Manager ID:</td>
 						<td>
-							<input id="employeeManagerId" type="hidden" th:value="${!employee.isEmpty} ? ${employee.managerId} : ''" />
+							<input id="employeeManagerId" type="hidden" th:value="${!employee.isEmpty} ? ${employee.managerId} : ''"/>
 						</td>
 					</tr>
 					<tr th:class="${employee.isEmpty} ? hidden : ''">
@@ -57,13 +57,13 @@
 					<tr>
 						<td class="label">Password:</td>
 						<td>
-							<input id="employeePassword" type="password" value="" class="update" />
+							<input id="employeePassword" type="text" value="" class="update" />
 						</td>
 					</tr>
 					<tr>
 						<td class="label">Confirm Password:</td>
 						<td>
-							<input id="employeeConfirmPassword" type="password" value="" class="update" />
+							<input id="employeeConfirmPassword" type="text" value="" class="update" />
 						</td>
 					</tr>
 					<tr th:class="${employee.isInitialEmployee} ? hidden : ''">
